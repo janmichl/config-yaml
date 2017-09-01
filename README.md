@@ -12,4 +12,4 @@ Type '`make`'.
 dependencies
 ============
 
-Eigen library install onto system (used only for example).
+Eigen library install onto system.
