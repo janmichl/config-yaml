@@ -3,11 +3,12 @@ cmake_minimum_required(VERSION 2.6.3)
 project(yaml-tests CXX)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
-option(COLLECT_FILES "Copy libraries to <build>/lib, binaries to <build>/bin, headers to <build>/include." ON)
+option(COLLECT_FILES    "Copy libraries to <build>/lib, binaries to <build>/bin, headers to <build>/include." ON)
+option(COMPILE_EXAMPLES "Compile examples."                                                                  OFF)
 
-#####################################
+###########
 ## Settings
-#####################################
+###########
 
 ##
 ## default options
@@ -32,9 +33,9 @@ endif(COLLECT_FILES)
 find_package(Eigen3 REQUIRED)
 include_directories(SYSTEM ${EIGEN3_INCLUDE_DIR})
 
-#####################################
+###############
 ## Dependencies
-#####################################
+###############
 
 add_custom_target(TGT_config-yaml_build_libraries)
 add_custom_target(TGT_config-yaml_copy_headers)
@@ -67,25 +68,26 @@ else(COLLECT_FILES)
     include_directories(SYSTEM "${PROJECT_SOURCE_DIR}/include/")
 endif(COLLECT_FILES)
 
-#############
+############
 ## Variables
-#############
+############
 
 set(CMAKE_BUILD_TYPE      ${YAML-CPP_BUILD_TYPE})
 set(CMAKE_CXX_FLAGS_DEBUG ${YAML-CPP_CXX_FLAGS_DEBUG})
 
-########
+#######
 ## main 
-########
+#######
+if(COMPILE_EXAMPLES)
+    set(TGT_NAME main)
+    add_executable(${TGT_NAME} ${CMAKE_SOURCE_DIR}/examples/main.cpp)
 
-set(TGT_NAME main)
-add_executable(${TGT_NAME} ${CMAKE_SOURCE_DIR}/examples/main.cpp)
+    target_link_libraries(${TGT_NAME} yaml-cpp)
 
-target_link_libraries(${TGT_NAME} yaml-cpp)
+    add_dependencies(${TGT_NAME} TGT_config-yaml_copy_headers)
+    add_dependencies(${TGT_NAME} TGT_config-yaml_build_libraries)
 
-add_dependencies(${TGT_NAME} TGT_config-yaml_copy_headers)
-add_dependencies(${TGT_NAME} TGT_config-yaml_build_libraries)
-
-set(CONFIG-YAML_CONFIG_DIR "${PROJECT_SOURCE_DIR}/config")
-set(REF_FILENAME "${CONFIG-YAML_CONFIG_DIR}/config.yaml") 
-file(COPY ${REF_FILENAME} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+    set(CONFIG-YAML_CONFIG_DIR "${PROJECT_SOURCE_DIR}/config")
+    set(REF_FILENAME "${CONFIG-YAML_CONFIG_DIR}/config.yaml") 
+    file(COPY ${REF_FILENAME} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+endif(COMPILE_EXAMPLES)

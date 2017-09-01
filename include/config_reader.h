@@ -12,6 +12,8 @@
 #include <vector>
 #include <fstream>
 
+#include <Eigen/Core>
+
 #include "yaml-cpp/yaml.h"
 
 namespace yaml_config

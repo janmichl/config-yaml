@@ -10,10 +10,9 @@
 #include <string>
 #include <vector>
 
-#include <Eigen/Core>
+#include "config_reader.h"
 
 #include "configurable_class_base.h"
-#include "config_reader.h"
 
 namespace yaml_config
 {
