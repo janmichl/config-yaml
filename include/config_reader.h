@@ -35,6 +35,11 @@ namespace yaml_config
             }
 
 
+            ConfigReader()
+            {
+            }
+
+
             template <typename t_Scalar,
                       int t_rows,
                       int t_flags>
