@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "config_reader.h"
+#include "config-yaml/config_reader.h"
 
 namespace yaml_config
 {

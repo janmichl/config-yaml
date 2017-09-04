@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 
-#include "config_reader.h"
+#include "config-yaml/config_reader.h"
 
 #include "configurable_class_base.h"
 
