@@ -95,6 +95,7 @@ namespace yaml_config
             }
 
 
+        private:
             const YAML::Node* findNode(const YAML::Node* current_node, const std::string& node_name)
             {
                 return(current_node->FindValue(node_name));
