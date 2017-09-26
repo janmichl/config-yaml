@@ -16,6 +16,13 @@
 
 namespace yaml_config
 {
+    enum Enum
+    {
+        UNDEFINED = 0,
+        FIRST     = 1,
+        SECOND    = 2
+    };
+
     class ConfigurableClassDerived : public ConfigurableClassBase
     {
         public:
@@ -42,6 +49,9 @@ namespace yaml_config
                 {
                     std::cout << vector3[i] << std::endl;
                 }
+                
+                config_reader.readEnum(node_name, "enum1", enum1);
+                std::cout << enum1 << std::endl;
             }
 
 
@@ -55,5 +65,7 @@ namespace yaml_config
             Eigen::Vector2d vector2;
 
             std::vector<std::string> vector3;
+
+            Enum enum1;
     };
 }//yaml_config

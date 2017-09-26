@@ -9,3 +9,4 @@ ConfigurableClassDerived:
   vector1: [1.0, 2.0]
   vector2: [3.0, 4.0]
   vector3: ["element1", "element2", "element3"]
+  enum1:   1

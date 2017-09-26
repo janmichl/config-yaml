@@ -2,7 +2,7 @@
     @file
     @author Jan Michalczyk
 
-    @brief
+    @brief Config file reader
 */
 
 #pragma once
@@ -43,8 +43,8 @@ namespace yaml_config
             template <typename t_Scalar,
                       int t_rows,
                       int t_flags>
-                void readVector(const std::string& node_name,
-                                const std::string& value_name,
+                void readVector(const std::string&                           node_name,
+                                const std::string&                           value_name,
                                 Eigen::Matrix<t_Scalar, t_rows, 1, t_flags>& to_read)
             {
                     const YAML::Node* node = findNode(findNode(&root_node_, node_name), value_name);
@@ -68,7 +68,7 @@ namespace yaml_config
             template<typename t>
                 void readScalar(const std::string& node_name,
                                 const std::string& value_name,
-                                t& to_read)
+                                t&                 to_read)
             {
                 const YAML::Node* node = findNode(findNode(&root_node_, node_name), value_name);
                 *node >> to_read; 
@@ -78,7 +78,7 @@ namespace yaml_config
             template<typename t>
                 void readVector(const std::string& node_name,
                                 const std::string& value_name,
-                                std::vector<t>& to_read)
+                                std::vector<t>&    to_read)
             {
                 const YAML::Node* node = findNode(findNode(&root_node_, node_name), value_name);
                 if(!(node->Type() == YAML::NodeType::Sequence))
@@ -92,6 +92,19 @@ namespace yaml_config
                 {
                     (*node)[i] >> to_read[i];
                 }
+            }
+
+
+            template<typename t>
+                void readEnum(const std::string& node_name, 
+                              const std::string& value_name,
+                              t&                 to_read)
+            {
+                const YAML::Node* node = findNode(findNode(&root_node_, node_name), value_name);
+
+                int enum_value = 0;
+                *node >> enum_value;
+                to_read = static_cast<t>(enum_value);
             }
 
 
