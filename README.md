@@ -1,5 +1,5 @@
-yaml-tests
-==========
+config-yaml
+===========
 
 Code for reading parameters specified in a yaml-file.
 Project uses yaml-cpp as a submodule.
