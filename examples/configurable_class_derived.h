@@ -16,6 +16,9 @@
 
 namespace yaml_config
 {
+    /**
+     * @brief Enum in configuration
+     */
     enum Enum
     {
         UNDEFINED = 0,
@@ -23,9 +26,17 @@ namespace yaml_config
         SECOND    = 2
     };
 
+    /**
+     * @brief Configurable class
+     */
     class ConfigurableClassDerived : public ConfigurableClassBase
     {
         public:
+            /**
+             * @brief Constructor
+             *
+             * @param[in] config_file
+             */
             ConfigurableClassDerived(const char* config_file) : ConfigurableClassBase(config_file), config_reader(config_file)
             {
                 readParameters("ConfigurableClassDerived");
@@ -33,6 +44,11 @@ namespace yaml_config
         
 
         private:
+            /**
+             * @brief Read parameters
+             *
+             * @param[in] node_name
+             */
             void readParameters(const std::string& node_name)
             {      
                 config_reader.readScalar(node_name, "string1", string1);

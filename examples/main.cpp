@@ -9,6 +9,9 @@
 
 #include "configurable_class_derived.h"
 
+/**
+ * @brief Example main loop
+ */
 int main()
 {
     try

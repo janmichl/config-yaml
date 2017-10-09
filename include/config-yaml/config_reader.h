@@ -18,9 +18,17 @@
 
 namespace yaml_config
 {
+    /**
+     * @brief Config reader class
+     */
     class ConfigReader
     {
         public:
+            /**
+             * @brief Constructor
+             *
+             * @param[in] filename
+             */
             ConfigReader(const std::string& filename)
             {
                 ifs_.open(filename.c_str());
@@ -35,11 +43,25 @@ namespace yaml_config
             }
 
 
+            /**
+             * @brief Default constructor
+             */
             ConfigReader()
             {
             }
 
 
+            /**
+             * @brief Read Eigen vector
+             *
+             * @tparam t_Scalar
+             * @tparam t_rows
+             * @tparam t_flags
+             *
+             * @param[in]      node_name
+             * @param[in]      value_name
+             * @param[in, out] to_read
+             */
             template <typename t_Scalar,
                       int t_rows,
                       int t_flags>
@@ -65,6 +87,15 @@ namespace yaml_config
             }
 
 
+            /**
+             * @brief Read scalar
+             *
+             * @tparam t
+             *
+             * @param[in]      node_name
+             * @param[in]      value_name
+             * @param[in, out] to_read
+             */
             template<typename t>
                 void readScalar(const std::string& node_name,
                                 const std::string& value_name,
@@ -75,6 +106,15 @@ namespace yaml_config
             }
             
             
+            /**
+             * @brief Read vector
+             *
+             * @tparam t
+             *
+             * @param[in]      node_name
+             * @param[in]      value_name
+             * @param[in, out] to_read
+             */
             template<typename t>
                 void readVector(const std::string& node_name,
                                 const std::string& value_name,
@@ -95,6 +135,15 @@ namespace yaml_config
             }
 
 
+            /**
+             * @brief Read enum
+             *
+             * @tparam t
+             *
+             * @param[in]      node_name
+             * @param[in]      value_name
+             * @param[in, out] to_read
+             */
             template<typename t>
                 void readEnum(const std::string& node_name, 
                               const std::string& value_name,
@@ -109,6 +158,12 @@ namespace yaml_config
 
 
         private:
+            /**
+             * @brief Find node
+             *
+             * @param[in] current_node
+             * @param[in] node_name
+             */
             const YAML::Node* findNode(const YAML::Node* current_node, const std::string& node_name)
             {
                 return(current_node->FindValue(node_name));

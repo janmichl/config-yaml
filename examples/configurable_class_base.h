@@ -11,9 +11,17 @@
 
 namespace yaml_config
 {
+    /**
+     * @brief Configurable class
+     */
     class ConfigurableClassBase
     {
         public:
+            /**
+             * @brief Constructor
+             *
+             * @param[in] config_file
+             */
             ConfigurableClassBase(const char* config_file) : config_reader(config_file)
             {
                 readParameters("ConfigurableClassBase");
@@ -21,6 +29,11 @@ namespace yaml_config
         
 
         private:
+            /**
+             * @brief Read parameters
+             *
+             * @param[in] node_name
+             */
             void readParameters(const std::string& node_name)
             {       
                 config_reader.readScalar(node_name, "uint1", uint1);
