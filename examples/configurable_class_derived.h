@@ -55,6 +55,10 @@ namespace yaml_config
                 std::cout << string1 << std::endl;
                 config_reader.readScalar(node_name, "string2", string2);
                 std::cout << string2 << std::endl;
+                config_reader.readScalar(node_name, "string3", string3);
+                std::cout << string3 << std::endl;
+                config_reader.readScalar(node_name, "string4", string4);
+                std::cout << string4 << std::endl;
                 config_reader.readVector(node_name, "vector1", vector1);
                 std::cout << vector1 << std::endl;
                 config_reader.readVector(node_name, "vector2", vector2);
@@ -76,6 +80,8 @@ namespace yaml_config
             
             std::string string1;
             std::string string2;
+            std::string string3;
+            std::string string4;
 
             Eigen::Vector2d vector1;
             Eigen::Vector2d vector2;

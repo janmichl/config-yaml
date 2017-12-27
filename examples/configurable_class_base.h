@@ -44,6 +44,10 @@ namespace yaml_config
                 std::cout << uint3 << std::endl;
                 config_reader.readScalar(node_name, "uint4", uint4);
                 std::cout << uint4 << std::endl;
+                config_reader.readScalar(node_name, "uint5", uint5);
+                std::cout << uint5 << std::endl;
+                config_reader.readScalar(node_name, "uint6", uint6);
+                std::cout << uint6 << std::endl;
             }
 
 
@@ -54,5 +58,7 @@ namespace yaml_config
             unsigned int uint2;
             unsigned int uint3;
             unsigned int uint4;
+            unsigned int uint5;
+            unsigned int uint6;
     };
 }//yaml_config

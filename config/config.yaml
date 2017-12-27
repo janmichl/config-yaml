@@ -3,9 +3,13 @@ ConfigurableClassBase:
   uint2: 2
   uint3: 3
   uint4: 4
+  uint5: 5
+  uint6: 6
 ConfigurableClassDerived:
   string1: 'this is the first string'
   string2: 'this is the second string'	
+  string3: 'this is the third string'
+  string4: 'this is the fourth string'	
   vector1: [1.0, 2.0]
   vector2: [3.0, 4.0]
   vector3: ["element1", "element2", "element3"]
