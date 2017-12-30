@@ -70,6 +70,9 @@ namespace yaml_config
                     std::cout << vector3[i] << std::endl;
                 }
                 
+                config_reader.readMatrix(node_name, "matrix1", matrix1);
+                std::cout << matrix1 << std::endl;
+                
                 config_reader.readEnum(node_name, "enum1", enum1);
                 std::cout << enum1 << std::endl;
             }
@@ -85,6 +88,8 @@ namespace yaml_config
 
             Eigen::Vector2d vector1;
             Eigen::Vector2d vector2;
+
+            Eigen::MatrixXd matrix1;
 
             std::vector<std::string> vector3;
 

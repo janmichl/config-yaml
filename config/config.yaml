@@ -14,3 +14,9 @@ ConfigurableClassDerived:
   vector2: [3.0, 4.0]
   vector3: ["element1", "element2", "element3"]
   enum1:   1
+  matrix1:
+    cols: 3
+    rows: 2
+    data: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+
+
